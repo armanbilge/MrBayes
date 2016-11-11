@@ -16799,6 +16799,12 @@ int RunChain (RandLong *seed)
                 theMove->nTotAccepted[i]++;
                 }
 
+						printf("CHAIN %d:\t", chn);
+						PrintNewick(NULL, 0, GetTreeFromIndex(0, 0, state[chn] ^ 1));
+            printf ("\t");
+						PrintNewick(NULL, 0, GetTreeFromIndex(0, 0, state[chn]));
+						printf("\t%f\n", r);
+
             /* update the chain */
             if (acceptMove == NO)
                 {

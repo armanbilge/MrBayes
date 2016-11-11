@@ -13989,3 +13989,37 @@ void TiProbsUsingPadeApprox (int dim, MrBFlt **qMat, MrBFlt v, MrBFlt r, MrBFlt 
         }
 }
 
+void PrintNewick(char **s, int *len, Tree *t) {
+	PrintNewickNode(t->root, t->isRooted);
+}
+
+void PrintNewickNode(TreeNode *p, int isRooted) {
+
+	if (p != NULL) {
+					      if (p->left == NULL && p->right == NULL)
+					          {
+					          printf("%s:%s", p->label, MbPrintNum(p->length));
+					}
+					      else
+					          {
+					          if (p->anc != NULL)
+					              printf("(");
+					          PrintNewickNode (p->left, isRooted);
+					          if (p->anc != NULL)
+					              printf (",");
+					          PrintNewickNode (p->right, isRooted);
+					          if (p->anc != NULL)
+					              {
+					              if (p->anc->anc == NULL && isRooted == NO)
+					                  {
+					                  printf (",%s:%s)", p->anc->label, MbPrintNum(p->length));
+													}
+					              else if (p->anc->anc != NULL)
+					                  {
+					                  printf ("):%s", MbPrintNum(p->length));
+					              }
+					          }
+					      }
+							}
+
+}
