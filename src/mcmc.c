@@ -16804,8 +16804,8 @@ int RunChain (RandLong *seed)
             printf ("\t");
 						PrintNewick(NULL, 0, GetTreeFromIndex(0, 0, state[chn]));
 						printf("\t%f\n", r);
-
-            /* update the chain */
+            /* never update the chain */
+						acceptMove = NO;
             if (acceptMove == NO)
                 {
                 /* the new state did not work out so shift chain back */
